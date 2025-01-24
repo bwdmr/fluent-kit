@@ -180,11 +180,11 @@ public func && <Model: Schema>(lhs: ModelValueFilter<Model>, rhs: ComplexJoinFil
 public struct ComplexJoinFilter {
     let filter: DatabaseQuery.Filter
     
-    init(filter: DatabaseQuery.Filter) {
+    public init(filter: DatabaseQuery.Filter) {
         self.filter = filter
     }
     
-    init<Model: Schema>(_ filter: ModelValueFilter<Model>) {
+    public init<Model: Schema>(_ filter: ModelValueFilter<Model>) {
         self.init(filter: .value(
             .extendedPath(filter.path, schema: Model.schemaOrAlias, space: Model.spaceIfNotAliased),
             filter.method,
@@ -192,7 +192,7 @@ public struct ComplexJoinFilter {
         ))
     }
     
-    init<Left, LField, Right, RField>(
+    public init<Left, LField, Right, RField>(
         _ lhs: KeyPath<Left, LField>, _ method: DatabaseQuery.Filter.Method, _ rhs: KeyPath<Right, RField>
     ) where Left: Schema, Right: Schema, LField: QueryableProperty, RField: QueryableProperty, LField.Value == RField.Value {
         self.init(filter: .field(
@@ -202,7 +202,7 @@ public struct ComplexJoinFilter {
         ))
     }
 
-    init<Left, LField, Right, RField>(
+    public init<Left, LField, Right, RField>(
         _ lhs: KeyPath<Left, LField>, _ method: DatabaseQuery.Filter.Method, _ rhs: KeyPath<Right, RField>
     ) where Left: Schema, Right: Schema, LField: QueryableProperty, RField: QueryableProperty, LField.Value? == RField.Value {
         self.init(filter: .field(
@@ -212,7 +212,7 @@ public struct ComplexJoinFilter {
         ))
     }
 
-    init<Left, LField, Right, RField>(
+    public init<Left, LField, Right, RField>(
         _ lhs: KeyPath<Left, LField>, _ method: DatabaseQuery.Filter.Method, _ rhs: KeyPath<Right, RField>
     ) where Left: Schema, Right: Schema, LField: QueryableProperty, RField: QueryableProperty, LField.Value == RField.Value? {
         self.init(filter: .field(
