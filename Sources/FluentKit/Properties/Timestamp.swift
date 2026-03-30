@@ -129,7 +129,7 @@ extension TimestampProperty: AnyDatabaseProperty {
     public var keys: [FieldKey] {
         self.$timestamp.keys
     }
-    
+
     public func input(to input: any DatabaseInput) {
         self.$timestamp.input(to: input)
     }
@@ -188,7 +188,7 @@ extension Fields {
             $0 as? any AnyTimestamp
         }
     }
-    
+
     func touchTimestamps(_ triggers: TimestampTrigger...) {
         self.touchTimestamps(triggers)
     }
@@ -221,5 +221,26 @@ extension Schema {
             .value(deletedAtField, .equal, .null),
             .value(deletedAtField, .greaterThan, timestamp.currentTimestampInput)
         ], .or))
+    }
+    
+    static func excludeDeleted(from filters: [DatabaseQuery.Filter]) -> [DatabaseQuery.Filter] {
+        guard let timestamp = self.init().deletedTimestamp else {
+            return filters
+        }
+        
+        let deletedAtField = DatabaseQuery.Field.extendedPath(
+            [timestamp.key],
+            schema: self.schemaOrAlias,
+            space: self.space
+        )
+        
+        var copy = filters
+        copy.append(.group([
+            .value(deletedAtField, .equal, .null),
+            .value(deletedAtField, .greaterThan, timestamp.currentTimestampInput)
+        ], .or))
+        
+        let filters = copy
+        return filters
     }
 }
