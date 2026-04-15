@@ -38,7 +38,7 @@ public struct TagMigration: Migration {
     }
 }
 
-public final class TagSeed: Migration {
+public final class TagSeed: Migration, @unchecked Sendable {
     public init() { }
 
     public func prepare(on database: any Database) -> EventLoopFuture<Void> {

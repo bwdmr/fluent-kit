@@ -8,7 +8,7 @@ extension Fields {
 // MARK: Type
 
 @propertyWrapper
-public final class OptionalEnumProperty<Model, WrappedValue>
+public final class OptionalEnumProperty<Model, WrappedValue>: @unchecked Sendable
     where Model: FluentKit.Fields,
         WrappedValue: Codable & Sendable,
         WrappedValue: RawRepresentable,

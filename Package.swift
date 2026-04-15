@@ -1,13 +1,10 @@
-// swift-tools-version:6.0
+// swift-tools-version:6.3
 import PackageDescription
 
 let package = Package(
     name: "fluent-kit",
     platforms: [
-        .macOS(.v10_15),
-        .iOS(.v13),
-        .watchOS(.v6),
-        .tvOS(.v13),
+        .macOS(.v15),
     ],
     products: [
         .library(name: "FluentKit", targets: ["FluentKit"]),
@@ -16,12 +13,12 @@ let package = Package(
         .library(name: "XCTFluent", targets: ["XCTFluent"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-nio.git", from: "2.81.0"),
-        .package(url: "https://github.com/apple/swift-log.git", from: "1.6.3"),
-        .package(url: "https://github.com/vapor/sql-kit.git", from: "3.32.0"),
-        .package(url: "https://github.com/apple/swift-distributed-tracing.git", from: "1.3.1"),
-        .package(url: "https://github.com/apple/swift-service-context.git", from: "1.0.0"),
-        .package(url: "https://github.com/swift-server/swift-service-lifecycle.git", from: "2.9.1"),
+        .package(url: "https://github.com/apple/swift-nio.git", from: "2.97.1"),
+        .package(url: "https://github.com/apple/swift-log.git", from: "1.12.0"),
+        .package(url: "https://github.com/vapor/sql-kit.git", from: "3.36.0"),
+        .package(url: "https://github.com/apple/swift-distributed-tracing.git", from: "1.4.1"),
+        .package(url: "https://github.com/apple/swift-service-context.git", from: "1.3.0"),
+        .package(url: "https://github.com/swift-server/swift-service-lifecycle.git", from: "2.11.0"),
     ],
     targets: [
         .target(

@@ -47,7 +47,7 @@ public struct StarMigration: AsyncMigration {
     }
 }
 
-public final class StarSeed: AsyncMigration {
+public final class StarSeed: AsyncMigration, @unchecked Sendable {
     public init() {}
 
     public func prepare(on database: any Database) async throws {

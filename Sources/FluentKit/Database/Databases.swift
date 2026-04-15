@@ -30,7 +30,7 @@ public final class Databases: @unchecked Sendable, Service { // @unchecked is sa
     // Lifecycle state for `Databases`
     private var isShutdown: Bool
 
-    public struct Middleware {
+    public struct Middleware: Sendable {
         let databases: Databases
 
         public func use(
