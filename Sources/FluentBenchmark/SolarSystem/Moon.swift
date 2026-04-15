@@ -53,7 +53,7 @@ public struct MoonMigration: Migration {
     }
 }
 
-public final class MoonSeed: Migration {
+public final class MoonSeed: Migration, @unchecked Sendable {
     public init() { }
 
     public func prepare(on database: any Database) -> EventLoopFuture<Void> {

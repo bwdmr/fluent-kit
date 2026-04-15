@@ -277,7 +277,7 @@ private final class Foo: Model, @unchecked Sendable {
     }
 }
 
-private final class FooAlias: ModelAlias {
+private final class FooAlias: ModelAlias, @unchecked Sendable {
     static let name = "foos_alias"
     let model = Foo()
 }

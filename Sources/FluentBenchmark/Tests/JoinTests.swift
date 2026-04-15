@@ -87,12 +87,12 @@ extension FluentBenchmarker {
                 }
             }
 
-            final class HomeTeam: ModelAlias {
+            final class HomeTeam: ModelAlias, @unchecked Sendable {
                 static let name = "home_teams"
                 let model = Team()
             }
 
-            final class AwayTeam: ModelAlias {
+            final class AwayTeam: ModelAlias, @unchecked Sendable {
                 static let name = "away_teams"
                 let model = Team()
             }
@@ -173,11 +173,11 @@ extension FluentBenchmarker {
             var id: UUID?
         }
 
-        final class MeAsAParticipant: ModelAlias {
+        final class MeAsAParticipant: ModelAlias, @unchecked Sendable {
             static let name: String = "me_as_a_participant"
             let model = ChatParticipant()
         }
-        final class OtherParticipant: ModelAlias {
+        final class OtherParticipant: ModelAlias, @unchecked Sendable {
             static let name: String = "other_participant"
             let model = ChatParticipant()
         }
@@ -295,7 +295,7 @@ private final class Match: Model, @unchecked Sendable {
     }
 }
 
-struct MatchMigration: Migration {
+private struct MatchMigration: Migration {
     func prepare(on database: any Database) -> EventLoopFuture<Void> {
         return database.schema("matches")
             .field("id", .uuid, .identifier(auto: false))

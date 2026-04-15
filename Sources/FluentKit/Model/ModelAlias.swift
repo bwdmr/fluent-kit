@@ -139,7 +139,7 @@ extension ModelAlias {
 /// Provides support for `@dynamicMemberLookup` to continue descending through arbitrary
 /// levels of nested projected properties values.
 @dynamicMemberLookup
-public final class AliasedField<Alias, Field>
+public final class AliasedField<Alias, Field>: @unchecked Sendable
     where Alias: ModelAlias, Field: Property, Alias.Model == Field.Model
 {
     public let field: Field

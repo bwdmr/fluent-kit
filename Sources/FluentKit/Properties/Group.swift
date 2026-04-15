@@ -100,7 +100,7 @@ extension GroupProperty: AnyCodableProperty {
 // MARK: Path
 
 @dynamicMemberLookup
-public final class GroupPropertyPath<Model, Property>
+public final class GroupPropertyPath<Model, Property>: @unchecked Sendable
     where Model: Fields
 {
     let key: FieldKey

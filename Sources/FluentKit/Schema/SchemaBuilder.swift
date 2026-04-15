@@ -6,7 +6,7 @@ extension Database {
 
 import NIOCore
 
-public final class SchemaBuilder {
+public final class SchemaBuilder: @unchecked Sendable {
     let database: any Database
     public var schema: DatabaseSchema
 

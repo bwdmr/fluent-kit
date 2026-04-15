@@ -2,7 +2,7 @@ import FluentKit
 import Foundation
 import XCTest
 
-public final class FluentBenchmarker {
+public final class FluentBenchmarker: @unchecked Sendable {
     public let databases: Databases
     public var database: any Database
 
